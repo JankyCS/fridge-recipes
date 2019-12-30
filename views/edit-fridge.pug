@@ -1,9 +1,6 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
   if !user
     h3 Please Log In
     form(action="/log-in" method="POST")
@@ -15,13 +12,11 @@ block content
       input(name="password" type="password")
       br
       button(type="submit") Log In
-    if error 
-      p error
     a(href='/sign-up') Don't have an account? Sign up here!
   else
-    h2 Welcome Back #{user.username}
-    a(href='/fridge') SEE FRIDGE
-    br
-    a(href='/add-fridge') EDIT FRIDGE
-    br
-    a(href='/log-out') LOG OUT
+    h2 Welcome Back to Your Fridge #{user.firstname} #{user.lastname}
+    
+    form(action="" method="POST")
+        textarea( rows="20" cols="100" name="food") #{user.fridge.toString()}
+        button(type="submit") Update
+    a(href='/') BACK

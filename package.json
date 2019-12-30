@@ -7,11 +7,20 @@
     "serverstart": "SET DEBUG=library-catalog:* & nodemon ./bin/www"
   },
   "dependencies": {
+    "async": "^3.1.0",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-session": "^1.17.0",
+    "express-validator": "^6.3.1",
+    "flash": "^1.1.0",
     "http-errors": "~1.6.3",
+    "mongoose": "^5.8.3",
     "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "pug": "2.0.0-beta11"
   }
 }

@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    h1 Sign Up
+    form(action='' method='POST')
+        label(for="firstName") First Name
+        input(name="firstName" type="text" value=(typeof first_name !== 'undefined'?first_name:"") required)
+        br
+        label(for="lastName") Last Name
+        input(name="lastName" type="text" value=(typeof last_name !== 'undefined'?last_name:""))
+        br
+        label(for="username" required) Username
+        input(name="username" placeholder="username" type="text" value=(typeof user_name !== 'undefined'?user_name:"") required)
+        br
+        label(for="password") Password
+        input(name="password" type="password" required)
+        br
+        label(for="confirmPass") Confirm Password
+        input(name="confirmPass" type="password" required)
+        
+        button(type="submit") Sign up!
+
+        if errors 
+            ul
+            for error in errors
+                li!= error.msg
+        
