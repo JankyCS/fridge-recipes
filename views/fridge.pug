@@ -17,12 +17,9 @@ block content
     a(href='/sign-up') Don't have an account? Sign up here!
   else
     .container-fluid.bg-white
-        
-       
-
         .row
             .col-sm-3
-            if user.fridge
+            if user.fridge.length>0
                 .col-sm-6
                     h2(style="font-weight:bold;padding:1em; text-align:center") Here's what you have in your fridge right now:
                     ul.list-group
@@ -32,7 +29,8 @@ block content
                     -}
                     br
             else
-                p NOTHING IN FRIDGE
+                .col-sm-6
+                    h2(style="font-weight:bold;padding:1em; text-align:center") You currently have nothing in your fridge!
             .col-sm-3
        
     

@@ -33,7 +33,7 @@ app.set('view engine', 'pug');
 
 console.log("OH");
 app.use(flash());
-app.use(session({ secret: "temp", resave: false, saveUninitialized: true }));
+app.use(session({ secret: process.env.sec, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));

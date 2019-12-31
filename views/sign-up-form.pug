@@ -1,27 +1,44 @@
+
 extends layout
 
 block content
-    h1 Sign Up
-    form(action='' method='POST')
-        label(for="firstName") First Name
-        input(name="firstName" type="text" value=(typeof first_name !== 'undefined'?first_name:"") required)
+  
+  if !user
+    #why.container-fluid.bg-white.text-center(style='border-color:black;')
+    .row
+      .col-sm-3(style="box-shadow: 10px 10px 5px grey;")
         br
-        label(for="lastName") Last Name
-        input(name="lastName" type="text" value=(typeof last_name !== 'undefined'?last_name:""))
         br
-        label(for="username" required) Username
-        input(name="username" placeholder="username" type="text" value=(typeof user_name !== 'undefined'?user_name:"") required)
+        h1= title
         br
-        label(for="password") Password
-        input(name="password" type="password" required)
+        h3 Register Your Account
+        form(action="" method="POST")
+            .form-group
+                input.form-control(placeholder="First Name" name="firstName" type="text" value=(typeof first_name !== 'undefined'?first_name:"") required)
+            .form-group
+                input.form-control(placeholder="Last Name" name="lastName" type="text" value=(typeof last_name !== 'undefined'?last_name:""))
+            .form-group
+                input.form-control(name="username" placeholder="username" type="text" value=(typeof user_name !== 'undefined'?user_name:"") required)
+            .form-group
+                input.form-control( name="password" type="password" placeholder="Password")
+            .form-group
+                input.form-control(name="confirmPass" type="password" required placeholder="Confirm Password")
+            button.btn.btn-primary(type="submit") Sign Up!
+        if error 
+          p error
         br
-        label(for="confirmPass") Confirm Password
-        input(name="confirmPass" type="password" required)
-        
-        button(type="submit") Sign up!
-
-        if errors 
-            ul
-            for error in errors
-                li!= error.msg
-        
+        br
+        br
+      .col-sm-5(style='background-color:white,box-shadow: 10px 10px 5px grey')
+        h1(style={'font-weight':'bold','font-size':'4em'}) Your Personal Recipe Management Tool
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      .col-sm-4(style={'padding':'2em'})
+        img(style='max-width:80%;border:3px solid black;' src='https://cloudinary-res.cloudinary.com/image/upload/cookbook_post_nxrr1c.jpg' alt='Cookbook')
+  else
+    h3 Welcome Back #{user.username}
+    a(href='/fridge') SEE FRIDGE
+    br
+    a(href='/add-fridge') EDIT FRIDGE
+    br
+    a(href='/log-out') LOG OUT

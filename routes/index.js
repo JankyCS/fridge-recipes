@@ -80,20 +80,34 @@ router.get("/recipes", function(req,res,next)
   {
     if(err)
     {
-      
+      console.log("Caught error:"+err)
+      res.redirect("/recipes");
     }
-  
-    if(body[0]!=='<')
+   console.log("this is body"+body);
+   
+    if(/^[\],:{}\s]*$/.test(body.replace(/\\["\\\/bfnrtu]/g, '@').
+replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
     {
+      console.log(body.charAt(0));
         var json=JSON.parse(body);
-      console.log("wrong");
+      
      
      // console.log(json);
      options.url=options.url+'&p='+((Math.random()*5)+6);
        request(options, function(err,res3,body2)
       {
+         if(/^[\],:{}\s]*$/.test(body2.replace(/\\["\\\/bfnrtu]/g, '@').
+replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
+    {
         console.log('request2')
         json2=JSON.parse(body2);
+    }
+    else
+    {
+      res.redirect('/recipes');
+    }
         //var final =json.concat(json2);
        // console.log(json);
         res.render('recipes',{title:'Recipes',user:req.user,recipes1:json,recipes2:json2});
@@ -106,10 +120,19 @@ router.get("/recipes", function(req,res,next)
       options.url='https://recipe-puppy.p.rapidapi.com/?i='+req.user.fridge.toString()+',chicken';
       request(options, function(err,res3,body2)
       {
+         if(/^[\],:{}\s]*$/.test(body2.replace(/\\["\\\/bfnrtu]/g, '@').
+replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
+        {
         console.log('request2')
         json=JSON.parse(body2);
        // console.log(json);
         res.render('recipes',{title:'Recipes',user:req.user,recipes1:json});
+        }
+        else
+        {
+          res.redirect("/recipes");
+        }
       });
     }
   });
@@ -126,4 +149,14 @@ router.get('*',
         res.redirect('/fridge');
     }
 );
+function IsJsonString(str) {
+    try {
+
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+
 module.exports = router;

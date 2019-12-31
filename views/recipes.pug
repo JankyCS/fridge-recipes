@@ -14,8 +14,12 @@ block content
       button(type="submit") Log In
     a(href='/sign-up') Don't have an account? Sign up here!
   else
-    .row
-        h2 Recipes for #{user.firstname} #{user.lastname}
+    .row(align='center')
+        .col-sm-3
+        .col-sm-6
+            h1(style="text-align:center;font-weight:bold") Recipes for #{user.firstname}
+            p(style="text-align:center;") Check out these recipes for inspiration in the kitchen! They are specially chosen for you based on what you have in your fridge!
+        .col-sm-3
     .row(align='center')
      
         .col-sm-12(align='center' style={'text-align':'center'})
@@ -30,18 +34,18 @@ block content
                         img.card-img-bottom(src=recipe.thumbnail width='200px' height='150px' style={'float':'left'})
                     else
                         img.card-img-bottom(src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg' width='200px' height='150px'  style={'float':'left'})
-
-            for recipe in recipes2.results
-                        .card(style={'margin':'1em','height':'425px','width':'200px','float':'left'})
-                            .card-body
-                                a.card-title(href=recipe.href)
-                                    h4 #{recipe.title}
-                                p.card-text(style={'font-size':'0.8em','text-align':'left','float':'left'}) Ingredients: #{recipe.ingredients.toString()}
-                            if recipe.thumbnail
-                                img.card-img-bottom(src=recipe.thumbnail width='200px' height='150px' style={'float':'left'})
-                            else
-                                img.card-img-bottom(src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg' width='200px' height='150px'  style={'float':'left'})
-
+            -if(typeof(recipes2)!=='undefined'){
+                for recipe in recipes2.results
+                    .card(style={'box-shadow':' 2px 2px 5px grey', 'margin':'1em','height':'425px','width':'200px','float':'left'})
+                        .card-body
+                            a.card-title(href=recipe.href)
+                                h4 #{recipe.title}
+                            p.card-text(style={'font-size':'0.8em','text-align':'left','float':'left'}) Ingredients: #{recipe.ingredients.toString()}
+                        if recipe.thumbnail
+                            img.card-img-bottom(src=recipe.thumbnail width='200px' height='150px' style={'float':'left'})
+                        else
+                            img.card-img-bottom(src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg' width='200px' height='150px'  style={'float':'left'})
+                -}
 
 
 

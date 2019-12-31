@@ -27,8 +27,7 @@ block content
         h2(style={'padding':'1em','font-weight':'bold'}) Update What's In Your Fridge!
 
         form(action="" method="POST" id="updateFridge")
-            textarea.form-control(style={'font-size':'1.2em','text-align':'center','font-family':'Gelasio'} rows="15" cols="20" name="food") #{user.fridge.toString().replace(/,/gi, ',\n')}
+            textarea.form-control(placeholder='garlic,\nginger,\nonion' style={'font-size':'1.2em','text-align':'center','font-family':'Gelasio'} rows="15" cols="20" name="food") #{user.fridge.toString().replace(/,/gi, ',\n')}
         
       .col-sm-2
-        
-    a(href='/') BACK
+  
