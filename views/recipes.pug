@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  if !user
+    h3 Please Log In
+    form(action="/log-in" method="POST")
+      label(for="username") Username 
+      input(name="username" placeholder="Username" type="text")
+      br
+      br
+      label(for="password") Password 
+      input(name="password" type="password")
+      br
+      button(type="submit") Log In
+    a(href='/sign-up') Don't have an account? Sign up here!
+  else
+    h2 Recipes for #{user.firstname} #{user.lastname}
+    for recipe in recipes.results
+        h4 #{recipe.title}
+        if recipe.thumbnail
+            img(src=recipe.thumbnail width='200' height='150')
+        else
+            img(src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg' width='200' height='150')
+   
+        
+        
+
+
+
+    

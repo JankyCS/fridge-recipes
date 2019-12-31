@@ -150,8 +150,9 @@ module.exports.fridge_view_post=function(req,res,next)
 {
     var strFood = req.body.food.replace(/\s/g,'');
     strFood=strFood.toLowerCase();
-    strFood=strFood.replace(/[^,a-z]/gi, '')
-    
+    strFood=strFood.replace(/[^,a-z]/gi, '');
+    strFood=strFood.replace(/^,|,$|(,)+/g, '$1');
+    strFood = strFood.replace(/^[\,]+|[\,]+$/g, "");
    // var newFridge = new Array(strFood);
     var newFridge = strFood.split(',');
     console.log(newFridge);

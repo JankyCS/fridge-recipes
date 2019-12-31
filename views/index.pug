@@ -1,25 +1,39 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
+  
   if !user
-    h3 Please Log In
-    form(action="/log-in" method="POST")
-      label(for="username") Username 
-      input(name="username" placeholder="Username" type="text")
-      br
-      br
-      label(for="password") Password 
-      input(name="password" type="password")
-      br
-      button(type="submit") Log In
-    if error 
-      p error
-    a(href='/sign-up') Don't have an account? Sign up here!
+    #why.container-fluid.bg-white.text-center(style='border-color:black;')
+    .row
+      .col-sm-3(style="box-shadow: 10px 10px 5px grey;")
+        
+
+        br
+        br
+        h1= title
+        br
+        h3 Please Log In
+        form(action="/log-in" method="POST")
+          .form-group
+            input.form-control( name="username" placeholder="Username" type="text")
+          .form-group
+            input.form-control( name="password" type="password" placeholder="Password")
+          button.btn.btn-primary(type="submit") Log In
+        if error 
+          p error
+        br
+        a(href='/sign-up') 
+          button.btn.btn-info(type="submit") Don't have an account? Sign up here!
+        br
+        br
+      .col-sm-5(style='background-color:white,box-shadow: 10px 10px 5px grey')
+        h1(style={'font-weight':'bold','font-size':'4em'}) Your Personal Recipe Management Tool
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      .col-sm-4(style={'padding':'2em'})
+        img(style='max-width:80%;border:3px solid black;' src='https://cloudinary-res.cloudinary.com/image/upload/cookbook_post_nxrr1c.jpg' alt='Cookbook')
   else
-    h2 Welcome Back #{user.username}
+    h3 Welcome Back #{user.username}
     a(href='/fridge') SEE FRIDGE
     br
     a(href='/add-fridge') EDIT FRIDGE
