@@ -14,9 +14,21 @@ block content
       button(type="submit") Log In
     a(href='/sign-up') Don't have an account? Sign up here!
   else
-    h2 Welcome Back to Your Fridge #{user.firstname} #{user.lastname}
-    
-    form(action="" method="POST")
-        textarea( rows="20" cols="100" name="food") #{user.fridge.toString()}
-        button(type="submit") Update
+    .row
+      .col-sm-2
+      .col-sm-4(align='center')
+        br
+        br
+        br
+        h2(style={'margin-top':'3em','padding':'1em','font-weight':'bold',}) When editing your fridge contents, make sure to seperate each item with a comma!
+
+        button.btn-lg.btn-outline-success(style={'margin':'1em','font-size':'2em','font-weight':'bold'} type="submit" form="updateFridge") Update
+      .col-sm-4(align='center')
+        h2(style={'padding':'1em','font-weight':'bold'}) Update What's In Your Fridge!
+
+        form(action="" method="POST" id="updateFridge")
+            textarea.form-control(style={'font-size':'1.2em','text-align':'center','font-family':'Gelasio'} rows="15" cols="20" name="food") #{user.fridge.toString().replace(/,/gi, ',\n')}
+        
+      .col-sm-2
+        
     a(href='/') BACK

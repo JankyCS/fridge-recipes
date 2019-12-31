@@ -130,7 +130,7 @@ module.exports.sign_up_post =[
 
 module.exports.login_post =
     passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/fridge",
     failureRedirect: "/",
     
   });
@@ -148,6 +148,11 @@ module.exports.fridge_add_get=function(req,res)
 
 module.exports.fridge_view_post=function(req,res,next)
 {
+    if(!req.user)
+    {
+        res.redirect('/');
+    }
+    console.log("reach");
     var strFood = req.body.food.replace(/\s/g,'');
     strFood=strFood.toLowerCase();
     strFood=strFood.replace(/[^,a-z]/gi, '');
@@ -166,7 +171,7 @@ module.exports.fridge_view_post=function(req,res,next)
         fridge: newFridge
     }
 
-
+    console.log("2");
     User.findByIdAndUpdate(req.user._id, newUser,{},function (err,thebook) {
                 if (err) { return next(err); }
                    res.redirect('/fridge');
