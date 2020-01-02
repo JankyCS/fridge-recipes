@@ -29,7 +29,7 @@ block content
                     .card-body
                         a.card-title(href=recipe.href)
                             h4 #{recipe.title}
-                        p.card-text(style={'font-size':'0.8em','text-align':'left','float':'left'}) Ingredients: #{recipe.ingredients.toString()}
+                        p.card-text(style={'font-size':'0.7em','text-align':'left','float':'left'}) Ingredients: #{recipe.ingredients.toString()}
                     if recipe.thumbnail
                         img.card-img-bottom(src=recipe.thumbnail width='200px' height='150px' style={'float':'left'})
                     else
@@ -40,7 +40,7 @@ block content
                         .card-body
                             a.card-title(href=recipe.href)
                                 h4 #{recipe.title}
-                            p.card-text(style={'font-size':'0.8em','text-align':'left','float':'left'}) Ingredients: #{recipe.ingredients.toString()}
+                            p.card-text(style={'font-size':'0.7em','text-align':'left','float':'left'}) Ingredients: #{recipe.ingredients.toString()}
                         if recipe.thumbnail
                             img.card-img-bottom(src=recipe.thumbnail width='200px' height='150px' style={'float':'left'})
                         else
