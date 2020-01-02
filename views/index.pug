@@ -17,11 +17,10 @@ block content
           .form-group
             input.form-control( name="password" type="password" placeholder="Password")
           button.btn.btn-primary(type="submit") Log In
-        if error 
-          p error
-        br
         a(href='/sign-up') 
-          button.btn.btn-info(type="submit") Don't have an account? Sign up here!
+          button.btn.btn-info(type="submit" style={'margin-top':'0.5em','margin-bottom':'0.5em'}) Don't have an account? Sign up here!
+        if err 
+          button.btn.btn-outline-danger= err
         br
         br
       .col-sm-5(style='background-color:white,box-shadow: 10px 10px 5px grey')

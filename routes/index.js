@@ -14,6 +14,16 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Fridge Recipes',user:req.user });
 });
 
+router.get('/', function(req, res, next) {
+  
+  //Redirect if already logged in
+  if(req.user)
+  {
+    res.redirect('/fridge');
+  }
+  res.render('index', { title: 'Fridge Recipes',user:req.user });
+});
+
 //POST Home/Login Page
 router.post('/', function(req, res, next) {
   console.log(req.user);
@@ -28,6 +38,11 @@ router.get("/log-in",
     res.redirect('/');
   }
 );
+
+//Route to display error message when incorrect username/pass is entered
+router.get("/login",function(req,res,next){
+   res.render('index', { title: 'Fridge Recipes',user:req.user,err:'Incorrect Username or Password' });
+});
 
 //POST request to manage log in
 router.post("/log-in",userController.login_post);

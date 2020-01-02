@@ -55,16 +55,18 @@ const validateSanitizeSignUp =
     
     //Username cannot already be in use
     validator.body('username').trim().isLength({min:4}).withMessage("Username must be at least 4 characters long")
-    .custom(function(value, {req})
-    {   
-        var t=true;
-        User.findOne({username: value},function(err,match)
-        {
-            console.log(!match);
-            t = !match;
-        });
-        return t;
-        
+    .custom((value, {req}) => {
+            return new Promise((resolve, reject) => {
+              User.findOne({username:req.body.username}, function(err, user){
+                if(err) {
+                  reject(new Error('Server Error'))
+                }
+                if(Boolean(user)) {
+                  reject(new Error('Username already in use'))
+                }
+                resolve(true)
+              });
+            });
     }),
     
     //Password must be at least 6 chars, and confirmPass must match
@@ -141,7 +143,7 @@ module.exports.sign_up_post =[
 module.exports.login_post =
     passport.authenticate("local", {
     successRedirect: "/fridge",
-    failureRedirect: "/",  
+    failureRedirect: "/login",  
   });
 
 //Log out use

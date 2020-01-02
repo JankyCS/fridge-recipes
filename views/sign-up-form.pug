@@ -24,8 +24,12 @@ block content
             .form-group
                 input.form-control(name="confirmPass" type="password" required placeholder="Confirm Password")
             button.btn.btn-primary(type="submit") Sign Up!
-        if error 
-          p error
+        if errors 
+          br
+          for error in errors
+            button.btn.btn-outline-danger(style={'margin-bottom':'0.5em'})= error.msg
+            br
+
         br
         br
         br
