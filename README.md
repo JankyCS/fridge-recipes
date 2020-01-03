@@ -17,3 +17,5 @@ This project is built with **NodeJS**, and its most popular web framework, **Exp
 User passwords are secured/encrypted with **bpcrytJS**, and authentication is facilitated with the **PassportJS** middleware.
 
 The front-end of this project uses the **Pug** templating engine to render webpages in Express, and also uses **Bootstrap** CSS framework.
+
+The recipes are obtained with the [Recipe Puppy API](http://www.recipepuppy.com/about/api/)
