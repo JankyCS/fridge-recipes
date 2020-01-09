@@ -12,7 +12,7 @@ Then, the user is presented with several recipes, relevant to the ingredients th
 ![Recipes](https://i.ibb.co/XyxJkGg/recipes.png)
 
 ## How It Works/Technologies Used
-This project is built with **NodeJS**, and its most popular web framework, **ExpressJS.** The web-app uses **Mongoose** to model data, and stores user information (username, pass, fridge contents) on a **MongoDB** database.
+This project is built with **NodeJS**, and its most popular web framework, **ExpressJS.** The web-app uses **Mongoose** to model data, and stores user information (username, pass, fridge contents) on a **MongoDB Atlas** database.
 
 User passwords are secured/encrypted with **bpcrytJS**, and authentication is facilitated with the **PassportJS** middleware.
 
