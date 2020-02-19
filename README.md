@@ -1,6 +1,4 @@
 # Welcome to Fridge Recipes!
-EDIT: The api used to fetch recipes (Recipe Puppy) is currently down. Sorry for any inconvenience!
-
 Fridge recipes is a modern day fridge-management, recipe-discovery tool to help users get inspired in the kitchen. Try it out [here](https://arcane-beach-51469.herokuapp.com)!
 
 ## How To Use 
