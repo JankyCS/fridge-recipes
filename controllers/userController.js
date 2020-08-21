@@ -18,7 +18,7 @@ passport.use(
       if (!user) {
         return done(null, false, { msg: "Incorrect username" });
       }
-      //Compare login password with PW stored in database, taking incryption into account
+      //Compare login password with PW stored in database, taking encryption into account
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
             // passwords match! log user in
